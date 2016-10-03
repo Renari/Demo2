@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Exit : MonoBehaviour {
+public class ExitController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
