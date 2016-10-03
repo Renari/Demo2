@@ -22,18 +22,11 @@ public class BackgroundScroller : MonoBehaviour {
 	void Update () {
         int movement = playerAnimator.GetInteger(CatController.MOVEMENT_KEY);
         float x = renderer.sharedMaterial.GetTextureOffset("_MainTex").x;
-        if (movement > 0)
-        {
-            if (x > 1)
-                x = 0;
-            x += Time.time % scrollSpeed * movement;
-        }
-        else if (movement < 0)
-        {
-            if (x < 0)
-                x = 1;
-            x -= Time.time % scrollSpeed * Mathf.Abs(movement);
-        }
+        if (x > 1)
+            x = 0;
+        if (x < 0)
+            x = 1;
+        x += Time.time % scrollSpeed * movement;
         Vector2 offset = new Vector2(x, savedOffset.y);
         renderer.sharedMaterial.SetTextureOffset("_MainTex", offset);
     }
