@@ -5,7 +5,6 @@ public class BackgroundScroller : MonoBehaviour {
 
     private new Renderer renderer;
     private Vector2 savedOffset;
-    private GameObject player;
     private Animator playerAnimator;
 
     public float scrollSpeed;
@@ -29,5 +28,10 @@ public class BackgroundScroller : MonoBehaviour {
         x += Time.time % scrollSpeed * movement;
         Vector2 offset = new Vector2(x, savedOffset.y);
         renderer.sharedMaterial.SetTextureOffset("_MainTex", offset);
+    }
+
+    void OnDisable()
+    {
+        renderer.sharedMaterial.SetTextureOffset("_MainTex", savedOffset);
     }
 }
