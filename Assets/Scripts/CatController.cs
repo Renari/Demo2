@@ -62,25 +62,21 @@ public class CatController : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (animator.GetInteger(MOVEMENT_KEY) == 2)
+            switch (animator.GetInteger(MOVEMENT_KEY))
             {
-                animator.SetInteger(MOVEMENT_KEY, animator.GetInteger(MOVEMENT_KEY) - 1);
-                playSound(walk);
-            }
-            else if (animator.GetInteger(MOVEMENT_KEY) == 1)
-            {
-                animator.SetInteger(MOVEMENT_KEY, animator.GetInteger(MOVEMENT_KEY) - 1);
-                playSound(null);
-            }
-            else if (animator.GetInteger(MOVEMENT_KEY) == -1)
-            {
-                animator.SetInteger(MOVEMENT_KEY, animator.GetInteger(MOVEMENT_KEY) + 1);
-                playSound(null);
-            }
-            else if (animator.GetInteger(MOVEMENT_KEY) == -1)
-            {
-                animator.SetInteger(MOVEMENT_KEY, animator.GetInteger(MOVEMENT_KEY) + 1);
-                playSound(walk);
+                case 2:
+                    animator.SetInteger(MOVEMENT_KEY, animator.GetInteger(MOVEMENT_KEY) - 1);
+                    playSound(walk);
+                    break;
+                case 1:
+                case -1:
+                    animator.SetInteger(MOVEMENT_KEY, 0);
+                    playSound(null);
+                    break;
+                case -2:
+                    animator.SetInteger(MOVEMENT_KEY, animator.GetInteger(MOVEMENT_KEY) + 1);
+                    playSound(walk);
+                    break;
             }
         }
         else if (Input.GetKeyDown(KeyCode.Backspace))
